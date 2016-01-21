@@ -26,9 +26,10 @@ public class SpawnSpheresInSphere : MonoBehaviour {
 
     void FixedUpdate() {
         foreach(Rigidbody body in this.spheresCreated) {
-            body.AddForce((this.transform.position - body.position) * gravity * Time.smoothDeltaTime, ForceMode.Acceleration);
-            body.AddForce(Vector3.right * (body.position.x > 0 ? -1 : 1) * (gravity / 2));
-            body.AddForce(Vector3.forward * (body.position.z > 0 ? -1 : 1) * (gravity / 2));
+            //body.AddForce((this.transform.position - body.position) * gravity * Time.smoothDeltaTime, ForceMode.Acceleration);
+            body.AddForce(Vector3.right * (body.position.x > 0 ? -1 : 1) * gravity, ForceMode.Acceleration);
+            body.AddForce(Vector3.forward * (body.position.z > 0 ? -1 : 1) * gravity, ForceMode.Acceleration);
+            body.AddForce(Vector3.up * (body.position.y > 0 ? -1 : 1) * gravity, ForceMode.Acceleration);
         }
     }
 }
